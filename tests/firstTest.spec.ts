@@ -58,4 +58,28 @@ test('User facing locators', async ({page}) => {
 
 test('Locating child elements', async ({page}) => {
     await page.locator('nb-card nb-radio :text-is("Option 1")').click()
+    await page.locator('nb-card').locator('nb-radio').locator(':text-is("Option 2")').click()
+
+    //mixing typical locators with ui locators
+    await page.locator('nb-card').getByRole('button', {name: "Sign in"}).first().click()
+
+    //avoid the use of nth.
+    await page.locator('nb-card').nth(3).getByRole('button').click()
 })
+
+test('Locating parent elements', async ({page}) => {
+    await page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name: 'Email'}).click()
+
+    await page.locator('nb-card', {has: page.locator('#inputEmail1')}).getByRole('textbox', {name: 'Email'}).click()
+
+    await page.locator('nb-card').filter({hasText:"Basic form"}).getByRole('textbox', {name: 'Email'}).click()
+
+    await page.locator('nb-card').filter({has: page.locator('.status-danger')}).getByRole('textbox', {name: "Password"}).click()
+
+    await page.locator('nb-card').filter({has: page.locator('nb-checkbox')}).filter({hasText: "Sign in"}).getByRole('textbox', {name: "Password"}).click()
+
+    //not recommended
+    await page.locator(':text-is("Using the Grid")').locator('..').getByRole('textbox', {name: "Email"}).click()
+})
+
+text('Reusin')
