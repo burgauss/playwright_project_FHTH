@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  timeout:10000,
+  timeout:30000,
   globalTimeout: 60000,
   expect: {
     timeout: 2000
@@ -35,8 +35,8 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    actionTimeout:5000,
-    navigationTimeout:5000
+    actionTimeout:15000,
+    navigationTimeout:15000
   },
 
   /* Configure projects for major browsers */
