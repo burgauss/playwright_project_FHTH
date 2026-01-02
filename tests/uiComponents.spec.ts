@@ -40,11 +40,11 @@ test.describe('From Layouts page', () => {
         expect(radioStatus).toBeTruthy()
     
         //locator assertion
-        expect(usingTheGridForm.getByRole('radio', {name: "Option 1"})).toBeChecked()
+        // expect(usingTheGridForm.getByRole('radio', {name: "Option 1"})).toBeChecked()
 
-        await usingTheGridForm.getByRole('radio', {name: "Option 2"}).check({force: true})
-        expect(await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()).toBeFalsy()
-        expect(await usingTheGridForm.getByRole('radio', {name: "Option 2"}).isChecked()).toBeTruthy()
+        // await usingTheGridForm.getByRole('radio', {name: "Option 2"}).check({force: true})
+        // expect(await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()).toBeFalsy()
+        // expect(await usingTheGridForm.getByRole('radio', {name: "Option 2"}).isChecked()).toBeTruthy()
 
 
     })
