@@ -98,6 +98,31 @@ test('List and dropdowns', async ({page}) => {
     }
 })
 
+test('List and dropdowns JB', async ({page}) => {
+    // This wait 
+    const dropdownMenu = page.locator('ngx-header nb-select')
+
+    const optionList = page.getByRole('list').locator('nb-option')
+    //validate that the color in the backgroud changes
+    const header = page.locator('nb-layout-header')
+    // await expect(header).toHaveCSS('background-color', 'rgb(50, 50, 89)')
+    
+    const colors = {
+        "Light": "rgb(255, 255, 255)",
+        "Dark": "rgb(34, 43, 69)",
+        "Cosmic": "rgb(50, 50, 89)",
+        "Corporate": "rgb(255, 255, 255)"
+    }
+
+    await dropdownMenu.click()
+    for (const color in colors) {
+        await optionList.filter({hasText: color}).click()
+        await expect(header).toHaveCSS('background-color', colors[color])
+        if (color != "Corporate")
+            await dropdownMenu.click()
+    }
+})
+
 test('tooltips', async ({page}) => {
     await page.getByText('Modal & Overlays').click()
     await page.getByText('Tooltip').click()
