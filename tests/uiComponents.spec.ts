@@ -141,5 +141,8 @@ test('tooltips', async ({page}) => {
 test('dialog boxes', async ({page}) => {
     await page.getByText('Tables & Data').click()
     await page.getByText('Smart Table').click()
+
+    // await page.getByRole('row', {name: /E-Mail/}).locator('nb-trash').click()
+    await page.getByRole('row').filter({hasText:'mdo@gmail.com'}).locator('.nb-trash').click();
     
 })
